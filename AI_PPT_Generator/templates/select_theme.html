@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Choose a Theme</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <h1>Choose a theme for your slides</h1>
+      <p class="sub">Pick a color combination — we’ll apply it to all slides.</p>
+    </header>
+
+    <form method="POST" action="{{ url_for('generate_ppt') }}" class="composer" style="max-width:760px; margin: 8px auto 24px;">
+      <input type="hidden" name="topic" value="{{ topic|e }}">
+      <div class="composer-inner" style="flex-direction:column; gap:14px; padding:20px;">
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px;">
+          <label class="theme-card">
+            <input type="radio" name="theme" value="modern_blue" checked>
+            <div class="preview modern_blue"><div class="preview-top">Modern Blue</div><div class="preview-bar"></div></div>
+            <div class="theme-meta">Clean & professional</div>
+          </label>
+
+          <label class="theme-card">
+            <input type="radio" name="theme" value="warm_retro">
+            <div class="preview warm_retro"><div class="preview-top">Warm Retro</div><div class="preview-bar"></div></div>
+            <div class="theme-meta">Warm & friendly</div>
+          </label>
+
+          <label class="theme-card">
+            <input type="radio" name="theme" value="aqua_minimal">
+            <div class="preview aqua_minimal"><div class="preview-top">Aqua Minimal</div><div class="preview-bar"></div></div>
+            <div class="theme-meta">Fresh & minimal</div>
+          </label>
+
+          <label class="theme-card">
+            <input type="radio" name="theme" value="dark_elegant">
+            <div class="preview dark_elegant"><div class="preview-top">Dark Elegant</div><div class="preview-bar"></div></div>
+            <div class="theme-meta">Sleek & high-contrast</div>
+          </label>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:8px;">
+          <a class="btn-ghost" href="{{ url_for('index') }}">Back</a>
+          <button type="submit" class="btn-primary">Create PPT</button>
+        </div>
+      </div>
+    </form>
+
+    <footer class="footer"><small>Preview: theme is applied to all slides automatically.</small></footer>
+  </main>
+</body>
+</html>
+        const form = document.getElementById('topicForm');
+        form.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            form.submit();
+            }
+        });
+        })();
+    </script>                                               
